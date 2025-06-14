@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QPushButton,
-    QTextEdit, QFileDialog, QLabel
+    QTextEdit, QFileDialog, QLabel, QLineEdit, QMessageBox
 )
 
 class PDFSummarizerUI(QWidget):
@@ -22,6 +22,14 @@ class PDFSummarizerUI(QWidget):
         self.load_btn.clicked.connect(self.load_pdf)
         self.layout.addWidget(self.load_btn)
 
+        # Summary length input
+        self.length_label = QLabel("Desired summary length (in sentences):")
+        self.layout.addWidget(self.length_label)
+
+        self.length_input = QLineEdit()
+        self.length_input.setPlaceholderText("e.g., 5")
+        self.layout.addWidget(self.length_input)
+
         self.summarize_btn = QPushButton("Summarize")
         self.summarize_btn.clicked.connect(self.summarize)
         self.layout.addWidget(self.summarize_btn)
@@ -37,6 +45,15 @@ class PDFSummarizerUI(QWidget):
             self.text_area.setPlainText(self.pdf_text)
 
     def summarize(self):
-        if self.pdf_text:
-            summary = self.summarizer_func(self.pdf_text)
-            self.text_area.setPlainText(summary)
+        if not self.pdf_text:
+            QMessageBox.warning(self, "No PDF", "Please load a PDF first.")
+            return
+
+        length = self.length_input.text().strip()
+        if not length.isdigit():
+            QMessageBox.warning(self, "Invalid Length", "Please enter a valid number for summary length.")
+            return
+
+        length = int(length)
+        summary = self.summarizer_func(self.pdf_text, summary_length=length)
+        self.text_area.setPlainText(summary)
