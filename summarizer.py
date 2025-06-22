@@ -1,4 +1,4 @@
-import fitz
+import fitz  # PyMuPDF
 import requests
 
 def extract_text_from_pdf(pdf_path):
@@ -19,4 +19,3 @@ def summarize_with_ollama(text, summary_length=5, model="llama3"):
     if response.ok:
         return response.json()["response"]
     return "Error: Could not summarize."
-
