@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+app/__pycache__/
+app/*.pyc
+app/*.pyo
+app/*.pyd
