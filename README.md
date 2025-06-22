@@ -1,4 +1,4 @@
-# 🧠 PDF Summarizer (Local & Private) — using Ollama + PyQt5
+# 🧠 PDF Summarizer — using Ollama + PyQt5
 
 A simple, privacy-focused desktop app to summarize one or more PDF files using LLMs — all running locally on your machine.
 
