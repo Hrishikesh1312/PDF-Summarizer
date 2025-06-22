@@ -1,26 +1,26 @@
-# 🧠 PDF Summarizer — using Ollama + PyQt5
+# PDF Summarizer — using Ollama + PyQt5
 
 A simple, privacy-focused desktop app to summarize one or more PDF files using LLMs — all running locally on your machine.
 
 This project uses:
 
-- 🧠 [Ollama](https://ollama.com) for local large language model inference
-- 🐍 PyQt5 for a modern desktop user interface
-- 📄 Support for **single or batch PDF summarization**
-- 🌙 Toggle between dark mode and light mode
-- 📂 Export summaries as `.txt` files
+- [Ollama](https://ollama.com) for local large language model inference
+- PyQt5 for a modern desktop user interface
+- Support for **single or batch PDF summarization**
+- Toggle between dark mode and light mode
+- Export summaries as `.txt` files
 
 ---
 
-## ⚙️ Requirements
+## Requirements
 
 > Ensure you have the following installed:
 
 ```bash
 # Python dependencies
-pip install PyQt5 fitz reportlab requests
+pip install PyQt5 PyMuPDF reportlab requests
 
-# Ollama (for LLMs)
+# Ollama
 https://ollama.com/download
 
 # Start the Ollama server
@@ -29,7 +29,7 @@ ollama serve
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ```bash
 git clone https://github.com/Hrishikesh1312/PDF-Summarizer
@@ -44,27 +44,27 @@ python main.py
 
 ---
 
-## 🛡️ Why Local?
+## Why Local?
 
 This tool **never sends your PDF files or content to the cloud**.
 
-✅ Your PDFs are read and summarized **entirely on your system**\
-✅ Ollama runs the LLM **locally**, using models like `llama3`\
-✅ No API keys or internet needed after setup
+- Your PDFs are read and summarized **entirely on your system**\
+- Ollama runs the LLM **locally**, using models like `llama3`\
+- No API keys or internet needed after setup
 
 ---
 
-## ✨ Features
+## Features
 
-- ✅ Choose summary length (in number of sentences)
-- ✅ Dark Mode / Light Mode toggle
-- ✅ Export summaries as `.txt`
-- ✅ Clean and responsive desktop UI
-- ✅ 100% local — your documents never leave your device
+- Choose summary length (in number of sentences)
+- Dark Mode / Light Mode toggle
+- Export summaries as `.txt`
+- Clean and responsive desktop UI
+- 100% local — your documents never leave your device
 
 ---
 
-## 👤 Screenshot
+## Screenshot
 
 Light Theme             |  Dark Theme
 :-------------------------:|:-------------------------:
@@ -72,7 +72,7 @@ Light Theme             |  Dark Theme
 
 ---
 
-## 📂 Folder Structure
+## Folder Structure
 
 ```
 pdf-summarizer/
@@ -84,7 +84,7 @@ pdf-summarizer/
 
 ---
 
-## 🧠 Customizing the Model
+## Customizing the Model
 
 You can change the model used by editing `summarizer.py`:
 
@@ -96,17 +96,16 @@ Try other local models like `mistral`, `gemma`, etc. (see: `ollama list`)
 
 ---
 
-## 📜 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-## 🙌 Acknowledgments
+## Acknowledgments
 
 - [Ollama](https://ollama.com) — for blazing fast local LLMs
 - [PyMuPDF](https://pymupdf.readthedocs.io/) — for fast and accurate PDF parsing
 - [PyQt5](https://doc.qt.io/qtforpython/) — for beautiful UIs in Python
 
 ---
-
