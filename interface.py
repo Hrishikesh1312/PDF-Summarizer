@@ -25,7 +25,7 @@ class SummarizerThread(QThread):
 class PDFSummarizerUI(QWidget):
     def __init__(self, summarizer_func):
         super().__init__()
-        self.setWindowTitle("🧠 PDF Summarizer - Ollama + Qt")
+        self.setWindowTitle("🧠 PDF Summarizer")
         self.setGeometry(100, 100, 900, 700)
         self.summarizer_func = summarizer_func
         self.pdf_text = ""
