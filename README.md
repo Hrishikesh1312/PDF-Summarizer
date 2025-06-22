@@ -23,8 +23,8 @@ pip install PyQt5 fitz reportlab requests
 # Ollama (for LLMs)
 https://ollama.com/download
 
-# Run your model of choice (e.g. LLaMA 3)
-ollama run llama3
+# Start the Ollama server
+ollama serve
 ```
 
 ---
@@ -32,11 +32,11 @@ ollama run llama3
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/yourusername/pdf-summarizer
-cd pdf-summarizer
+git clone https://github.com/Hrishikesh1312/PDF-Summarizer
+cd PDF-Summarizer
 
-# Start Ollama model in a separate terminal
-ollama run llama3
+# Start Ollama in a separate terminal
+ollama serve
 
 # Run the app
 python main.py
@@ -56,7 +56,6 @@ This tool **never sends your PDF files or content to the cloud**.
 
 ## ✨ Features
 
-- ✅ Load and summarize **one or many** PDF files at once
 - ✅ Choose summary length (in number of sentences)
 - ✅ Dark Mode / Light Mode toggle
 - ✅ Export summaries as `.txt`
@@ -67,7 +66,9 @@ This tool **never sends your PDF files or content to the cloud**.
 
 ## 👤 Screenshot
 
-> *Add a screenshot of the app here for visual clarity*
+Light Theme             |  Dark Theme
+:-------------------------:|:-------------------------:
+![Screenshot 2025-06-22 135917](https://github.com/user-attachments/assets/e08b1047-f3de-4c6c-872c-7e2cf5b0a594)  |  ![Screenshot 2025-06-22 135932](https://github.com/user-attachments/assets/d45f0039-a317-47e7-a691-0645f58b0ccd)
 
 ---
 
@@ -76,7 +77,7 @@ This tool **never sends your PDF files or content to the cloud**.
 ```
 pdf-summarizer/
 ├── main.py              # Entry point
-├── ui_main.py           # PyQt5 GUI
+├── interface.py           # PyQt5 GUI
 ├── summarizer.py        # PDF text extraction + Ollama integration
 └── README.md
 ```
