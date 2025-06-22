@@ -6,7 +6,8 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
-
+import time
+import re  
 
 class SummarizerThread(QThread):
     finished = pyqtSignal(str)
@@ -52,7 +53,7 @@ class PDFSummarizerUI(QWidget):
         self.layout.addWidget(self.load_btn)
 
         self.length_label = QLabel(
-            "Step 2: Set desired summary length (sentences):")
+            "Step 2: Maximum desired sentences:")
         self.layout.addWidget(self.length_label)
 
         self.length_input = QLineEdit()
@@ -92,6 +93,7 @@ class PDFSummarizerUI(QWidget):
             self.text_area.setPlainText(self.pdf_text)
 
     def summarize(self):
+        self.start_time = time.time()
         if not self.pdf_text:
             QMessageBox.warning(self, "No PDF", "Please load a PDF first.")
             return
@@ -143,6 +145,28 @@ class PDFSummarizerUI(QWidget):
         self.text_area.setPlainText(summary)
         self.summarize_btn.setEnabled(True)
         self.load_btn.setEnabled(True)
+        elapsed_time = time.time() - self.start_time
+        self.spinner_label.setText(f"✅ Done in {elapsed_time:.2f} seconds")
+        self.show_stats(summary)
+
+    def show_stats(self, summary):
+        original_words = len(self.pdf_text.split())
+        summary_words = len(summary.split())
+
+        original_sentences = len(re.findall(r'[.!?]', self.pdf_text))
+        summary_sentences = len(re.findall(r'[.!?]', summary))
+
+        word_reduction = 100 * (1 - summary_words / original_words) if original_words else 0
+        sentence_reduction = 100 * (1 - summary_sentences / original_sentences) if original_sentences else 0
+
+        stats = (f"\n---\n"
+                f"📊 Word Count: {original_words} ➝ {summary_words} "
+                f"({word_reduction:.1f}% shorter)\n"
+                f"📝 Sentence Count: {original_sentences} ➝ {summary_sentences} "
+                f"({sentence_reduction:.1f}% shorter)\n")
+
+        self.text_area.append(stats)
+
 
     def toggle_theme(self):
         self.is_dark_mode = not self.is_dark_mode
