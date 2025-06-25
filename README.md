@@ -79,33 +79,14 @@ pdf-summarizer/
 ├── main.py              # Entry point
 ├── interface.py           # PyQt5 GUI
 ├── summarizer.py        # PDF text extraction + Ollama integration
+├── LICENSE
 └── README.md
 ```
-
----
-
-## Customizing the Model
-
-You can change the model used by editing `summarizer.py`:
-
-```python
-def summarize_with_ollama(text, summary_length=5, model="llama3"):
-```
-
-Try other local models like `mistral`, `gemma`, etc. (see: `ollama list`)
 
 ---
 
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
-
----
-
-## Acknowledgments
-
-- [Ollama](https://ollama.com) — for blazing fast local LLMs
-- [PyMuPDF](https://pymupdf.readthedocs.io/) — for fast and accurate PDF parsing
-- [PyQt5](https://doc.qt.io/qtforpython/) — for beautiful UIs in Python
 
 ---
